@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,10 +62,8 @@ fun AppNavHost(navHostController: NavHostController) {
         startDestination = Routes.HOME
     ){
         composable(Routes.HOME){
-            var customName by remember { mutableStateOf("") }
-
-            val listOfStrings = remember { mutableStateListOf("Leo") }
-
+            var customName by rememberSaveable { mutableStateOf("") }
+            val listOfStrings = rememberSaveable { mutableStateListOf("Leo") }
 
             HomeScreen(
                 customName = customName,
